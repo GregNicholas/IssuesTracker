@@ -1,0 +1,325 @@
+body {
+  margin: 0;
+  background: #f1f5f8;
+}
+
+header {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  height: 70px;
+  background-color: #cfdde7;
+  width: 100%;
+  display: flex;
+  align-items: flex-center;
+  justify-content: center;
+  box-shadow: 1px 1px 1px 1px rgba(116, 110, 110, 0.199);
+}
+.header-inner {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hamburger-btn {
+  font-size: 1.3rem;
+  position: relative;
+  bottom: 0;
+  width: 40px;
+  height: 35px;
+  right: 0;
+  outline: none;
+  background-color: rgb(134, 125, 125);
+  color: whitesmoke;
+}
+.addTransiton {
+  transform: translateX(200px);
+  transition: transform 0.5s ease-in-out;
+}
+.removeTransition {
+  transform: translateX(20px);
+  transition: transform 0.5s ease-in-out;
+}
+
+#sidebar-list {
+  background-color: rgb(134, 125, 125);
+  height: 100vh;
+  width: 200px;
+  position: absolute;
+  z-index: 2000;
+  right: 0;
+  top: 0;
+  margin-top: 70px;
+  margin-bottom: 0;
+}
+.nav-big {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  font-weight: bold;
+}
+
+.nav-big-link {
+  cursor: pointer;
+  color: white;
+  text-decoration: none !important;
+}
+
+.nav-small {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  margin: auto;
+  height: 40%;
+  margin-top: 50px;
+  width: 80%;
+}
+.nav-small-link {
+  cursor: pointer;
+  color: whitesmoke;
+  padding-bottom: 5px;
+}
+
+.page-container {
+  position: absolute;
+  top: 0;
+  padding: 70px 0 0 0;
+  height: 100%;
+  width: 100%;
+}
+
+.centered-container {
+  max-width: 500px;
+  padding-top: 3rem;
+  margin: 0 auto;
+}
+
+.issue-card {
+  margin-bottom: 1rem;
+  min-width: 18rem;
+  max-width: 36rem;
+  background: white;
+  padding: 0.5rem 1rem 1rem 1rem;
+  border: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  transition: all 0.5s;
+  margin-top: 1rem;
+}
+
+.issue-card textarea {
+  width: 100%;
+  border: none;
+  background: #e8e8e8;
+  padding: 5px 10px;
+  height: 50%;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 2px solid #016ba8;
+}
+
+.card-head {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid black;
+  background: white;
+}
+
+.header-title {
+  height: fit-content;
+  min-height: 2.875rem;
+  margin: 0;
+  font-size: 1.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.header-column2 {
+  padding-left: 1rem;
+}
+
+.header-element {
+  margin: 0;
+  padding-top: 0.2rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #956a4c;
+}
+
+.issue-card-body {
+}
+
+.issue-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  column-gap: 1rem;
+}
+
+.double-issue-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+  border-bottom: 1px solid black;
+}
+
+.issue-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  height: 100%;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid black;
+}
+
+.issue-element {
+  padding: 2rem, 0.25rem;
+  color: #111;
+  display: flex;
+  column-gap: 1rem;
+}
+
+.issue-element-title {
+  flex-direction: column;
+  font-weight: 600;
+  flex-basis: 3rem;
+  font-size: 0.85rem;
+  color: gray;
+  text-transform: uppercase;
+}
+
+.issue-element-value {
+  flex-direction: column;
+}
+
+/* add issue form */
+.add-issue-form {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.add-issue-form label {
+  text-align: left;
+  display: block;
+}
+
+.add-issue-form h2 {
+  font-size: 1.25rem;
+  color: blue;
+  margin-bottom: 1.9rem;
+}
+
+.add-issue-form input,
+.add-issue-form textarea,
+.add-issue-form select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.issue-btn {
+  background: rgb(134, 125, 125);
+  color: #fff;
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.issue-btn:hover {
+  background: rgb(126, 117, 117);
+}
+
+.issue-form {
+  margin: 1rem;
+}
+
+.form-section {
+  text-align: start;
+  margin-bottom: 1rem;
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+}
+
+.form-label {
+  margin-bottom: 0.25rem;
+}
+
+.form-control {
+  margin-bottom: 0.75rem;
+}
+
+.text-box {
+  white-space: pre-wrap;
+}
+
+.comment-card {
+  overflow-wrap: break-word;
+  margin-bottom: 1rem;
+  min-width: 18rem;
+  max-width: 36rem;
+  background: white;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  transition: all 0.5s;
+  margin-top: 1rem;
+}
+
+.delete-comment {
+  color: red;
+  font-size: 0.7rem;
+  cursor: pointer;
+  margin-bottom: 0;
+  width: fit-content;
+}
+
+.delete-comment:hover {
+  text-decoration: underline;
+}
+
+.confirm-popup {
+  /* This way it could be display flex or grid or whatever also. */
+  display: block;
+  width: 330px;
+  height: 150px;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%);
+  /* margin: -200px 0 0 -200px; */
+
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
