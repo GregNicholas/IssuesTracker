@@ -69,9 +69,9 @@ header {
 .nav-small {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   justify-content: space-around;
-  margin: auto;
+  margin: 0 0 0 1.5rem;
   height: 40%;
   margin-top: 50px;
   width: 80%;
@@ -80,6 +80,13 @@ header {
   cursor: pointer;
   color: whitesmoke;
   padding-bottom: 5px;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #0081ee;
+  margin: 1rem;
 }
 
 .page-container {
@@ -92,21 +99,22 @@ header {
 
 .centered-container {
   max-width: 500px;
-  padding-top: 3rem;
-  margin: 0 auto;
+  min-width: 300px;
+  margin: 1rem auto;
+  margin: 1rem auto;
+  text-align: center;
+  padding: 0 0 1rem 0;
 }
 
 .issue-card {
-  margin-bottom: 1rem;
-  min-width: 18rem;
-  max-width: 36rem;
+  margin: 1rem auto;
+  max-width: 500px;
   background: white;
   padding: 0.5rem 1rem 1rem 1rem;
   border: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
   transition: all 0.5s;
-  margin-top: 1rem;
 }
 
 .issue-card textarea {
@@ -214,27 +222,22 @@ header {
   flex-direction: column;
 }
 
-/* add issue form */
-.add-issue-form {
+/* add and edit issue form */
+.add-edit-issue-form {
   max-width: 550px;
-  margin: 0 auto;
+  margin: 1rem auto;
+  padding: 0 0 1rem 0;
   text-align: center;
 }
 
-.add-issue-form label {
+.add-edit-issue-form label {
   text-align: left;
   display: block;
 }
 
-.add-issue-form h2 {
-  font-size: 1.25rem;
-  color: blue;
-  margin-bottom: 1.9rem;
-}
-
-.add-issue-form input,
-.add-issue-form textarea,
-.add-issue-form select {
+.add-edit-issue-form input,
+.add-edit-issue-form textarea,
+.add-edit-issue-form select {
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -244,7 +247,6 @@ header {
 }
 
 .issue-btn {
-  background: rgb(134, 125, 125);
   color: #fff;
   border: 0;
   padding: 0.5rem;
@@ -252,8 +254,20 @@ header {
   cursor: pointer;
 }
 
-.issue-btn:hover {
-  background: rgb(126, 117, 117);
+.submit-btn {
+  background: rgb(35, 35, 245);
+}
+
+.cancel-btn {
+  background: rgb(59, 59, 59);
+}
+
+.submit-btn:hover {
+  background: rgb(2, 2, 184);
+}
+
+.cancel-btn:hover {
+  background: rgb(49, 49, 49);
 }
 
 .issue-form {
@@ -268,6 +282,16 @@ header {
 .form-section input,
 .form-section textarea {
   width: 100%;
+}
+
+input[type="radio"] {
+  width: 1rem;
+  margin-right: 1rem;
+  display: inline;
+}
+
+.add-edit-issue-form .radio-label {
+  display: inline-block;
 }
 
 .form-label {
@@ -309,7 +333,6 @@ header {
 }
 
 .confirm-popup {
-  /* This way it could be display flex or grid or whatever also. */
   display: block;
   width: 330px;
   height: 150px;
@@ -318,8 +341,10 @@ header {
   left: 50%;
   top: 20%;
   transform: translate(-50%);
-  /* margin: -200px 0 0 -200px; */
-
   background: white;
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+
+.popup-body {
+  padding: 0.5rem;
 }
