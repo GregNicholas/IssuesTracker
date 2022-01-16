@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useIssues } from "../contexts/IssuesContext";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { db } from "../firebase";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ const IssueForm = (props) => {
   const [issueSubmitted, setIssueSubmitted] = useState();
   const [loading, setLoading] = useState(false);
   //const { tickets, setTickets } = useContext(IssuesContext);
-  const { fetchData, setFetchData } = useIssues();
+  const { setFetchData } = useIssues();
   let navigate = useNavigate();
   //const [dueDate, setDueDate] = useState(new Date());
   const [issue, setIssue] = useState(() => {
@@ -243,7 +243,7 @@ const IssueForm = (props) => {
               checked={issue.priority === "normal"}
               onChange={handleChange}
             />
-            <label htmlFor="normal">
+            <label htmlFor="normal" className="radio-label">
               <span>
                 <span></span>
               </span>
@@ -259,7 +259,7 @@ const IssueForm = (props) => {
               checked={issue.priority === "low"}
               onChange={handleChange}
             />
-            <label htmlFor="low">
+            <label htmlFor="low" className="radio-label">
               <span>
                 <span></span>
               </span>
@@ -275,7 +275,7 @@ const IssueForm = (props) => {
               checked={issue.priority === "high"}
               onChange={handleChange}
             />
-            <label htmlFor="high">
+            <label htmlFor="high" className="radio-label">
               <span>
                 <span></span>
               </span>
@@ -339,9 +339,9 @@ const IssueForm = (props) => {
           }
         />
 
-        <input className="issue-btn" type="submit" value="Submit" />
+        <input className="submit-btn issue-btn" type="submit" value="Submit" />
         <input
-          className="issue-btn"
+          className="cancel-btn issue-btn"
           type="button"
           value="Cancel"
           onClick={() => navigate("/issues")}
