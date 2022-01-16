@@ -2,18 +2,18 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 // import { useHistory } from "react-router-dom";
-// import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 // import { useRoles } from "../contexts/RoleContext";
-// import IssuesContext from "../contexts/IssuesContext";
+import { useIssues } from "../contexts/IssuesContext";
 
-// import CommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 import CommentDisplay from "./CommentDisplay";
-// import ConfirmPopup from "./ConfirmPopup";
+import ConfirmPopup from "./ConfirmPopup";
 
-// import { db } from "../firebase";
-// import { doc, updateDoc, deleteField } from "firebase/firestore";
-// import firebase from "firebase/compat/app"
-// import "firebase/compat/firestore";
+import { db } from "../firebase";
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 const Issue = ({
   issueID,
@@ -36,43 +36,43 @@ const Issue = ({
   updatedBy,
   dateUpdated
 }) => {
-  // const { currentUser } = useAuth();
+  const { currentUser } = useAuth();
   // const { isAdmin } = useRoles();
-  //const history = useHistory();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(false);
   const [makeComment, setMakeComment] = useState(false);
-  const modifyPrivilege = false;
+  const modifyPrivilege = currentUser.uid === uid;
   //const modifyPrivilege = currentUser.uid === uid || isAdmin(currentUser.uid);
-  //const { issues, setIssues, tickets, setTickets } = useContext(IssuesContext);
+  const { setFetchData } = useIssues();
   console.log(updatedBy);
   const handleDelete = () => {
-    // try {
-    //   deleteIssue(issueID);
-    // } catch {
-    //   setError("Issue not submitted");
-    // }
+    try {
+      deleteIssue(issueID);
+    } catch {
+      setError("Issue not submitted");
+    }
     setLoading(false);
   };
 
-  // const deleteIssue = async (id) => {
-  //   await db
-  //     .collection("issues")
-  //     .where("issueID", "==", id)
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       querySnapshot.docs[0].ref.delete();
-  //       setIssues(
-  //         issues.filter(function (i) {
-  //           return i.issueID !== id;
-  //         })
-  //       );
-  //     });
+  const deleteIssue = async (id) => {
+    await db
+      .collection("issues")
+      .where("issueID", "==", id)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs[0].ref.delete();
+        setFetchData((prev) => prev + 1);
+        // setIssues(
+        //   issues.filter(function (i) {
+        //     return i.issueID !== id;
+        //   })
+        // );
+      });
 
-  //   console.log("delete", id);
-  //   setDisplayIssue(null);
-  // };
+    console.log("delete", id);
+    setDisplayIssue(null);
+  };
 
   return (
     <div key={issueID} className="issue-card">
@@ -84,12 +84,12 @@ const Issue = ({
         close
       </Button>
 
-      {/* {modifyPrivilege ? (
-        <Link
-          className="navlink-edit"
-          to={{
-            pathname: "/edit-issue",
-            state: {
+      {modifyPrivilege ? (
+        <div style={{ margin: "0 0 1rem 0" }}>
+          <Link
+            className="navlink-edit"
+            to="/edit-issue"
+            state={{
               issueID,
               uid,
               author,
@@ -102,22 +102,28 @@ const Issue = ({
               dueDate,
               assignee,
               status
-            }
-          }}
-        >
-          <Button
-            variant="warning"
-            id="edit-button"
-            disabled={!modifyPrivilege}
-            style={{ marginRight: ".5rem" }}
-            onClick={() => {
-              console.log("Clicked edit");
             }}
           >
-            Edit
+            <Button
+              variant="warning"
+              id="edit-button"
+              disabled={!modifyPrivilege}
+              style={{ marginRight: ".5rem" }}
+              onClick={() => setDisplayIssue(null)}
+            >
+              Edit
+            </Button>
+          </Link>
+          <Button
+            variant="danger"
+            onClick={() => setPopup(true)}
+            style={{ position: "relative", margin: "0 1rem" }}
+            disabled={!modifyPrivilege}
+          >
+            Delete
           </Button>
-        </Link>
-      ) : null} */}
+        </div>
+      ) : null}
 
       <div className="card-head">
         <h2 className="header-title">{subject}</h2>
@@ -194,16 +200,6 @@ const Issue = ({
 
         {!makeComment ? (
           <>
-            {modifyPrivilege ? (
-              <Button
-                variant="danger"
-                onClick={() => setPopup(true)}
-                style={{ position: "relative", float: "right" }}
-                disabled={!modifyPrivilege}
-              >
-                Delete
-              </Button>
-            ) : null}
             <Button variant="primary" onClick={() => setMakeComment(true)}>
               New Comment
             </Button>
