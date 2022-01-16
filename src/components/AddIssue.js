@@ -4,8 +4,8 @@ import IssueForm from "./IssueForm";
 const AddIssue = () => {
   return (
     <>
-      <div className="add-issue-form">
-        <h2>Add Issue</h2>
+      <div className="add-edit-issue-form">
+        <h2 className="page-title">Add Issue</h2>
 
         <IssueForm />
       </div>
