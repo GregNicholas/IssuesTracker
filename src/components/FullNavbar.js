@@ -2,6 +2,14 @@ import React, { useState } from "react";
 //import { Link } from "react-scroll";
 import { useIssues } from "../contexts/IssuesContext";
 import { Link } from "react-router-dom";
+import {
+  faTimes,
+  faHome,
+  faClipboard,
+  faPlusSquare,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FullNavbar = ({ navClass, linkClassName }) => {
   return (
@@ -21,13 +29,22 @@ export const NavComponent = ({ onClick, navClass, linkClassName }) => {
   };
   return (
     <nav className={navClass}>
-      {["Home", "Issues", "Add Issue", "Edit Issue"].map((page) => (
+      {[
+        ["Home", faHome],
+        ["Issues", faClipboard],
+        ["Add Issue", faPlusSquare],
+        ["Profile", faUser]
+      ].map(([page, icon]) => (
         <Link
           key={page}
           to={`/${page.split(" ").join("-")}`}
           className={linkClassName}
           onClick={handleClick}
         >
+          <FontAwesomeIcon
+            icon={icon}
+            style={{ fontSize: "1.5rem", marginRight: ".75rem" }}
+          />
           {page}
         </Link>
       ))}
