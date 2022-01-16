@@ -16,101 +16,6 @@ const Issues = () => {
   // const { currentUser } = useAuth();
   // const { isLoggedIn, setIsLoggedIn } = useContext(IssuesContext);
 
-  // const issues = React.useMemo(() => [
-  //   {
-  //     subject: "Tasks",
-  //     issueID: "195c7605-3b7b-873e-ass6-9618b2373c1e",
-  //     dateCreated: [1640906725279, "Dec 30, 2021 15:25"],
-  //     dateUpdated: [1641358172765, "Jan 4, 2022 20:49"],
-  //     dueDate: [1637952550206, "Nov 26, 2021"],
-  //     author: "Greg Schoenberg",
-  //     uid: "z4dS77zgghYVQE657AOP5nCWwaU2",
-  //     description: "format comment display",
-  //     issueType: "new feature",
-  //     category: "back end",
-  //     priority: "high",
-  //     status: "inProgress",
-  //     updatedBy: "Demo Admin",
-  //     comments: [
-  //       {
-  //         uid: "Jrr3NiNUL9QaSZbKMyzIRi22rZl2",
-  //         date: "Nov 26 2021 10:38",
-  //         commentID: "131ad969-a7b3-cd48-a445-c064b4f7837d",
-  //         commentText: "new comment",
-  //         author: "A"
-  //       },
-  //       {
-  //         date: "Jan 04 2022 20:29",
-  //         commentText: "test",
-  //         uid: "tSRdQeeqPwUTZwWwFM0KwfCG6eP2",
-  //         author: "Demo User",
-  //         commentID: "eb12671a-e3e4-c7df-cd5b-c4c877415f5a"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     subject:
-  //       "Tasks which have a very long title to test the limits of the table",
-  //     issueID: "195c7605-3b7b-873e-d156-9618b2373c1e",
-  //     dateCreated: [1637952571299, "Nov 26, 2021 10:49"],
-  //     dueDate: [1637952550206, "Nov 26, 2021"],
-  //     author: "Greg Schoenberg",
-  //     uid: "z4dS77zgghYVQE657AOP5nCWwaU2",
-  //     description: "Removed commenting,  format comment display",
-  //     issueType: "new feature",
-  //     category: "back end",
-  //     priority: "medium",
-  //     status: "inProgress",
-  //     updatedBy: "Demo Admin",
-  //     comments: [
-  //       {
-  //         uid: "Jrr3NiNUL9QaSZbKMyzIRi22rZl2",
-  //         date: "Nov 26 2021 10:38",
-  //         commentID: "131ad969-a7b3-cd48-a445-c064b4f7837d",
-  //         commentText: "new comment",
-  //         author: "A"
-  //       },
-  //       {
-  //         date: "Jan 04 2022 20:29",
-  //         commentText: "test",
-  //         uid: "tSRdQeeqPwUTZwWwFM0KwfCG6eP2",
-  //         author: "Demo User",
-  //         commentID: "eb12671a-e3e4-c7df-cd5b-c4c877415f5a"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     subject: "Second Task",
-  //     issueID: "195c7605-3b7b-873e-d156-9618b2373c1e",
-  //     dateCreated: [1637126191748, "Nov 16, 2021 21:16"],
-  //     dueDate: [1637644498000, "Nov 22, 2021"],
-  //     author: "A",
-  //     uid: "Jrr3NiNUL9QaSZbKMyzIRi22rZl2",
-  //     description:
-  //       "-Added commenting,  format comment display, make comments persistent upon edit\n\ncolor for issues table based on priority\n\n-filter by priority or issue",
-  //     issueType: "bug",
-  //     category: "front end",
-  //     priority: "low",
-  //     status: "open",
-  //     comments: [
-  //       {
-  //         uid: "Jrr3NiNUL9QaSZbKMyzIRi22rZl2",
-  //         date: "Nov 26 2021 10:38",
-  //         commentID: "131ad969-a7b3-cd48-a445-c064b4f7837d",
-  //         commentText: "new comment",
-  //         author: "A"
-  //       },
-  //       {
-  //         date: "Jan 04 2022 20:29",
-  //         commentText: "test",
-  //         uid: "tSRdQeeqPwUTZwWwFM0KwfCG6eP2",
-  //         author: "Demo User",
-  //         commentID: "eb12671a-e3e4-c7df-cd5b-c4c877415f5a"
-  //       }
-  //     ]
-  //   }
-  // ]);
-
   // React.useEffect(() => {
   // 	let unmounted = false;
   // 	if (!unmounted) {
@@ -188,6 +93,7 @@ const Issues = () => {
 
   return (
     <div className="centered-container">
+      <h2 className="page-title">Issues</h2>
       {displayIssue ? (
         <Issue
           {...displayIssue[0]}
