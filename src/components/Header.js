@@ -3,13 +3,19 @@ import FullNavbar from "./FullNavbar";
 import { Link } from "react-scroll";
 import SmallNavbar from "./SmallNavbar";
 import { useWindowWidthAndHeight } from "../customHooks/CustomHooks";
+import { faBug } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
-  const [width, height] = useWindowWidthAndHeight();
+  const [width] = useWindowWidthAndHeight();
   return (
     <header>
       <div className="header-inner">
         <Link to="Home" className="logo nav-link">
+          <FontAwesomeIcon
+            icon={faBug}
+            style={{ fontSize: "1.5rem", marginRight: ".5rem" }}
+          />
           ISSUE TRACKER
         </Link>
         {width > 1000 ? (
