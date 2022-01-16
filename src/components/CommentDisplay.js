@@ -1,17 +1,17 @@
 import React, { useState, useContext } from "react";
 
-// import { useAuth } from '../contexts/AuthContext';
-// import IssuesContext from '../contexts/IssuesContext';
+import { useAuth } from "../contexts/AuthContext";
+import { useIssues } from "../contexts/IssuesContext";
 
-// import { db } from '../firebase';
+import { db } from "../firebase";
 // import { doc, updateDoc, deleteField } from "firebase/firestore";
-// import firebase from "firebase/compat/app"
-// import "firebase/compat/firestore";
+// import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 const CommentDisplay = ({ issueID, uid, comments, updateComments }) => {
   const [error, setError] = useState("");
-  // const { currentUser } = useAuth();
-  // const { tickets, setTickets } = useContext(IssuesContext);
+  const { currentUser } = useAuth();
+  const { setFetchData } = useIssues();
 
   const handleDeleteComment = (commentID) => {
     try {
@@ -20,7 +20,7 @@ const CommentDisplay = ({ issueID, uid, comments, updateComments }) => {
     } catch {
       setError("Comment not deleted");
     } finally {
-      setTickets(tickets + 1);
+      setFetchData();
     }
   };
 
@@ -47,14 +47,14 @@ const CommentDisplay = ({ issueID, uid, comments, updateComments }) => {
               {comment.author} - {comment.date}
             </p>
             <div>{comment.commentText}</div>
-            {/* {currentUser.uid === comment.uid ? (
+            {currentUser.uid === comment.uid ? (
               <p
                 onClick={() => handleDeleteComment(comment.commentID)}
                 className="delete-comment"
               >
                 Delete Comment
               </p>
-            ) : null} */}
+            ) : null}
           </div>
         );
       })
