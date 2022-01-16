@@ -15,6 +15,7 @@ import Home from "./Home";
 import Issues from "./Issues";
 import AddIssue from "./AddIssue";
 import EditIssue from "./EditIssue";
+import Profile from "./Profile";
 
 // import IssuesContext from "../contexts/IssuesContext";
 // import {RoleContextProvider} from "../contexts/RoleContext";
@@ -35,11 +36,13 @@ export default function App() {
             <Route path="/issues" element={<Issues />} />
             <Route path="/add-issue" element={<AddIssue />} />
             <Route path="/edit-issue" element={<EditIssue />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </Router>
