@@ -1,55 +1,73 @@
-import React, { useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useIssues } from "../contexts/IssuesContext";
+import { PieChart } from "react-minimal-pie-chart";
 
 export default function Home() {
-  const [error, setError] = useState("");
-  const { currentUser, logout, updateUserName } = useAuth();
-  const navigate = useNavigate();
+  const { issues } = useIssues();
+  console.log(issues);
+  const numOpen = issues.filter((item) => {
+    return item.status === "open";
+  }).length;
+  const numInProgress = issues.filter((item) => {
+    return item.status === "inProgress";
+  }).length;
+  const numClosed = issues.filter((item) => {
+    return item.status === "closed";
+  }).length;
 
-  async function handleLogout() {
-    setError("");
-
-    try {
-      await logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
-  console.log(currentUser ? true : false);
-
-  // if (!currentUser.displayName) {
-  //   //const promises = []
-  //   setError("");
-  //   console.log("updating demo user name");
-  //   //promises.push(updateEmail(emailRef.current.value))
-  //   updateUserName("Demo User")
-  //     .then(() => {
-  //       navigate("/");
-  //     })
-  //     .catch(() => {
-  //       setError("failed to update demo account");
-  //     });
-  // }
+  const numBug = issues.filter((item) => {
+    return item.issueType === "bug";
+  }).length;
+  const numNewFeature = issues.filter((item) => {
+    return item.issueType === "new feature";
+  }).length;
+  const numStyle = issues.filter((item) => {
+    return item.issueType === "style";
+  }).length;
 
   return (
     <div className="centered-container">
-      <Card className="card">
-        <Card.Body>
-          <h2 className="text-center mb-4 card">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-          </Link>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
+      <div
+        style={{
+          display: "flex",
+          padding: "0 0.5rem",
+          margin: "0 auto",
+          gap: "1rem"
+        }}
+      >
+        <div className="pie-chart-card">
+          <PieChart
+            data={[
+              { title: "Open", value: numOpen, color: "#000db5" },
+              { title: "In Progress", value: numInProgress, color: "#f50060" },
+              { title: "Closed", value: numClosed, color: "#ffa600" }
+            ]}
+            label={({ dataEntry }) => dataEntry.value}
+          />
+          <h3>Status</h3>
+          <ul>
+            <li>Open</li>
+            <li>In Progress</li>
+            <li>Closed</li>
+          </ul>
+        </div>
+        <div className="pie-chart-card">
+          <PieChart
+            data={[
+              { title: "Bug", value: numBug, color: "#000db5" },
+              { title: "New Feature", value: numNewFeature, color: "#f50060" },
+              { title: "Style", value: numStyle, color: "#ffa600" }
+            ]}
+            label={({ dataEntry }) => dataEntry.value}
+          />
+          <h3>Issue Type</h3>
+          <ul>
+            <li>Bug</li>
+            <li>New Feature</li>
+            <li>Style</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
