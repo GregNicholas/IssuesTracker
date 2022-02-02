@@ -2,10 +2,10 @@ import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useIssues } from "../contexts/IssuesContext";
 import { PieChart } from "react-minimal-pie-chart";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { issues } = useIssues();
-  console.log(issues);
   const numOpen = issues.filter((item) => {
     return item.status === "open";
   }).length;
@@ -28,6 +28,16 @@ export default function Home() {
 
   return (
     <div className="centered-container">
+      <Link
+        style={{
+          textDecoration: "none"
+        }}
+        to={"/Issues"}
+        className="L"
+      >
+        <div className="home-link">See Issues</div>
+      </Link>
+
       <div
         style={{
           display: "flex",
