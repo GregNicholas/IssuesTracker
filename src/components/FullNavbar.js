@@ -41,11 +41,17 @@ export const NavComponent = ({ onClick, navClass, linkClassName }) => {
           className={linkClassName}
           onClick={handleClick}
         >
-          <FontAwesomeIcon
-            icon={icon}
-            style={{ fontSize: "1.5rem", marginRight: ".75rem" }}
-          />
-          {page}
+          <div
+            style={{
+              width: "2rem",
+              display: "inline-flex",
+              justifyContent: "center",
+              marginRight: "0.75rem"
+            }}
+          >
+            <FontAwesomeIcon icon={icon} style={{ fontSize: "1.5rem" }} />
+          </div>
+          <span>{page}</span>
         </Link>
       ))}
     </nav>
