@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-// import { useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-// import { useRoles } from "../contexts/RoleContext";
+import { useRoles } from "../contexts/RoleContext";
 import { useIssues } from "../contexts/IssuesContext";
 
 import CommentForm from "./CommentForm";
@@ -37,15 +36,16 @@ const Issue = ({
   dateUpdated
 }) => {
   const { currentUser } = useAuth();
-  // const { isAdmin } = useRoles();
+  const { isAdmin } = useRoles();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(false);
   const [makeComment, setMakeComment] = useState(false);
-  const modifyPrivilege = currentUser.uid === uid;
-  //const modifyPrivilege = currentUser.uid === uid || isAdmin(currentUser.uid);
+  const modifyDeletePrivilege =
+    currentUser.uid === uid || isAdmin(currentUser.uid);
+  const modifyPrivilege = assignee === currentUser.displayName;
+  console.log("issue permissions", assignee === currentUser.displayName);
   const { setFetchData } = useIssues();
-  console.log(updatedBy);
   const handleDelete = () => {
     try {
       deleteIssue(issueID);
@@ -63,14 +63,8 @@ const Issue = ({
       .then((querySnapshot) => {
         querySnapshot.docs[0].ref.delete();
         setFetchData((prev) => prev + 1);
-        // setIssues(
-        //   issues.filter(function (i) {
-        //     return i.issueID !== id;
-        //   })
-        // );
       });
 
-    console.log("delete", id);
     setDisplayIssue(null);
   };
 
@@ -84,7 +78,7 @@ const Issue = ({
         close
       </Button>
 
-      {modifyPrivilege ? (
+      {modifyDeletePrivilege || modifyPrivilege ? (
         <div style={{ margin: "0 0 1rem 0" }}>
           <Link
             className="navlink-edit"
@@ -107,21 +101,22 @@ const Issue = ({
             <Button
               variant="warning"
               id="edit-button"
-              disabled={!modifyPrivilege}
               style={{ marginRight: ".5rem" }}
               onClick={() => setDisplayIssue(null)}
             >
               Edit
             </Button>
           </Link>
-          <Button
-            variant="danger"
-            onClick={() => setPopup(true)}
-            style={{ position: "relative", margin: "0 1rem" }}
-            disabled={!modifyPrivilege}
-          >
-            Delete
-          </Button>
+          {modifyDeletePrivilege && (
+            <Button
+              variant="danger"
+              onClick={() => setPopup(true)}
+              style={{ position: "relative", margin: "0 1rem" }}
+              disabled={!modifyDeletePrivilege}
+            >
+              Delete
+            </Button>
+          )}
         </div>
       ) : null}
 
@@ -131,7 +126,7 @@ const Issue = ({
           <div className="header-column">
             <p className="header-element">Created: {dateCreated[1]}</p>
             <p className="header-element">-{author}</p>
-            <p className="header-element">Assigned to: </p>
+            <p className="header-element">Assigned to: {assignee}</p>
           </div>
           <div className="header-column header-column2">
             {dateUpdated && (
