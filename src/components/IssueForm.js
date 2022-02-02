@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useIssues } from "../contexts/IssuesContext";
+import { useRoles } from "../contexts/RoleContext";
 import { Alert } from "react-bootstrap";
 import { db } from "../firebase";
 import DatePicker from "react-datepicker";
@@ -8,16 +9,15 @@ import { useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
 const IssueForm = (props) => {
-  //const handleSubmit = props.handleSubmit;
-  //const currentUser = props.currentUser;
   const { currentUser } = useAuth();
   const [error, setError] = useState("");
   const [issueSubmitted, setIssueSubmitted] = useState();
   const [loading, setLoading] = useState(false);
-  //const { tickets, setTickets } = useContext(IssuesContext);
   const { setFetchData } = useIssues();
+  const { isAdmin, getDevelopers } = useRoles();
+  const developers = getDevelopers();
+
   let navigate = useNavigate();
-  //const [dueDate, setDueDate] = useState(new Date());
   const [issue, setIssue] = useState(() => {
     return {
       issueID: props.issue ? props.issue.issueID : uniqueID(),
@@ -154,6 +154,25 @@ const IssueForm = (props) => {
       ? `${month} ${day}, ${year} ${hour}:${minute}`
       : `${month} ${day}, ${year}`;
   };
+
+  const assigneeOptions = developers.map((d) => {
+    return (
+      <option key={d.name} value={d.name}>
+        {d.name}
+      </option>
+    );
+  });
+
+  const selectAssignee = (
+    <div className="form-section">
+      <label htmlFor="assignee" style={{ display: "block" }}>
+        Assignee
+      </label>
+      <select name="assignee" onChange={handleChange}>
+        {assigneeOptions}
+      </select>
+    </div>
+  );
 
   const selectStatus = !props.issue ? (
     ""
@@ -305,28 +324,7 @@ const IssueForm = (props) => {
             </option>
           </select>
         </div>
-        <div className="form-section">
-          <label htmlFor="assignee" style={{ display: "block" }}>
-            Assignee
-          </label>
-          <select name="category" onChange={handleChange}>
-            <option
-              value="front end"
-              defaultValue={issue.category === "front end"}
-            >
-              Front End
-            </option>
-            <option
-              value="back end"
-              defaultValue={issue.category === "back end"}
-            >
-              Back End
-            </option>
-            <option value="other" defaultValue={issue.category === "other"}>
-              Other
-            </option>
-          </select>
-        </div>
+        {selectAssignee}
         {selectStatus}
         <label htmlFor="dueDate" style={{ display: "block" }}>
           Due Date
