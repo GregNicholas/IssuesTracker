@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 import Signup from "./authentication/Signup";
 import { AuthProvider } from "../contexts/AuthContext";
 import Login from "./authentication/Login";
@@ -7,6 +8,7 @@ import Logout from "./authentication/Logout";
 import PrivateWrapper from "./authentication/PrivateWrapper";
 import ForgotPassword from "./authentication/ForgotPassword";
 import UpdateProfile from "./authentication/UpdateProfile";
+
 //import AdminDashboard from "./AdminDashboard";
 import { db } from "../firebase";
 
@@ -18,16 +20,12 @@ import EditIssue from "./EditIssue";
 import Profile from "./Profile";
 
 // import IssuesContext from "../contexts/IssuesContext";
-// import {RoleContextProvider} from "../contexts/RoleContext";
-
-import { Container } from "react-bootstrap";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function App() {
   return (
     <div className="page-container">
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route element={<PrivateWrapper />}>
