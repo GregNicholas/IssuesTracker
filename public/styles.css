@@ -8,7 +8,7 @@ header {
   z-index: 2000;
   top: 0;
   height: 70px;
-  background-color: #cfdde7;
+  background-color: rgb(173, 197, 214);;
   width: 100%;
   display: flex;
   align-items: flex-center;
@@ -87,25 +87,46 @@ header {
 }
 
 .home-link {
-  margin: auto;
-  width: 8rem;
-  padding-top: 2px;
-  color: #0d6efd;
-  border: 1px solid #0d6efd;
-  border-radius: 40px;
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
   display: flex;
+  width: 9rem;
   justify-content: center;
-  align-items: center;
-  box-shadow: 0px 3px 0px #0d6efd;
-  transition: hover 0.2s;
-  transition: active 0.1s;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: auto;
+  outline: none;
+  padding: 8px 0.8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
-.home-link:hover {
-  background: #cfdde7;
+.home-link:hover,
+.home-link:focus {
+  background-color: #07c;
 }
+
+.home-link:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+}
+
 .home-link:active {
-  box-shadow: 0px 0px 0px #0d6efd;
+  background-color: #0064bd;
+  box-shadow: none;
 }
 
 .page-title {
