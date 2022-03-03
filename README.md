@@ -44,7 +44,7 @@ react-fontawesome icons
 
 ### Links
 
-- Live Site URL: [Issue Tracker](https://)
+- Live Site URL: [Issue Tracker](https://issue-tracker-csb.vercel.app)
 
 
 ### by Greg Schoenberg
