@@ -14,7 +14,7 @@ with email, log out, and update profile.
          -There is a popup modal to confirm deletions. 
 * A user may comment on other issues as well, and only delete their own comments.
 * Admin users may edit or delete any issues
-* Issue form has fields for title and description. There is a select dropdown list to select an assignee. There are radios to select issue type and status.
+* Issue form has fields for title and description. There are select dropdowns list to select issue type, category, and assignee. Radio buttons to set prioriity. Due date can be chosen
 * Issues are displayed in a sortable table. Key info is visible on the table with color coding for urgency. Items are clickable to display more detail.
 * There are simple charts to display quick statistics
 * Data is updated in real time and stored in the firebase firestore database.
