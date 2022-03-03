@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import IssuesContext from "../contexts/IssuesContext";
 import { useAuth } from "../contexts/AuthContext";
 import { db } from "../firebase";
 
