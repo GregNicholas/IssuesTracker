@@ -4,9 +4,10 @@
 
 This app is an issue tracking system, created so that an individual or members of a team can keep track of issues related to a project they are working on.
 
-##Requirements/Features
-*In the app, a user must be able sign up/login in order to view or add issues.
-         -Authentication is set up using firebase, email, username and password sign up, log in
+## Requirements/Features
+
+* In the app, a user must be able sign up/login in order to view or add issues.
+         - Authentication is set up using firebase, email, username and password sign up, log in
 with email, log out, and update profile.
 
 * User must be able to create new issues, and edit/delete issues they have created. 
@@ -22,17 +23,17 @@ with email, log out, and update profile.
      
 ### Built with
 
--[React](https://reactjs.org/) - JS library
+- [React](https://reactjs.org/) - JS library
 
--Custom hooks: useWindowWidthAndHeight to determine window size and either show the navbar
+- Custom hooks: useWindowWidthAndHeight to determine window size and either show the navbar
 at the top of the screen or in a closable side nav
 
--Context: AuthContext for all authentication functions, including current user's info
+- Context: AuthContext for all authentication functions, including current user's info
          IssuesContext fetches issues related data for use in the app.
          
 - Using css for a responsive design
 
-### More dependencies;
+### More dependencies
 react-router-dom version 6.2.1 to implement component routing
 react-bootstrap for some cards and buttons
 react-table to build the sortable table
@@ -46,4 +47,4 @@ react-fontawesome icons
 - Live Site URL: [Issue Tracker](https://)
 
 
-by Greg Schoenberg
+### by Greg Schoenberg
