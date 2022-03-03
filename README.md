@@ -1,4 +1,4 @@
-#Issue tracking app with React and firebase
+# Issue tracking app with React and firebase
 
 ## Overview
 
