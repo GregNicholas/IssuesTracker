@@ -12,7 +12,7 @@ export default function ConfirmPopup({ handleDelete, setPopup }) {
           <Button
             variant="secondary"
             onClick={() => setPopup(false)}
-            style={{ position: "relative", float: "right", marginRight: "30%" }}
+            style={{ position: "relative", float: "right" }}
           >
             cancel
           </Button>
