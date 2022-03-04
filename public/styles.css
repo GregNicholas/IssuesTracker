@@ -8,7 +8,7 @@ header {
   z-index: 2000;
   top: 0;
   height: 70px;
-  background-color: rgb(173, 197, 214);;
+  background-color: rgb(173, 197, 214);
   width: 100%;
   display: flex;
   align-items: flex-center;
@@ -157,7 +157,7 @@ header {
   margin: 1rem auto;
   max-width: 500px;
   background: white;
-  padding: 0.5rem 1rem 1rem 1rem;
+  padding: 1rem;
   border: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0.25rem;
@@ -381,19 +381,19 @@ input[type="radio"] {
 
 .confirm-popup {
   display: block;
-  width: 330px;
   height: 150px;
+  border-radius: 5px;
   position: fixed;
   z-index: 100;
   left: 50%;
   top: 20%;
   transform: translate(-50%);
   background: white;
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 60px 10px rgb(0 0 0 / 90%);
 }
 
 .popup-body {
-  padding: 0.5rem;
+  padding: 0.7rem;
 }
 
 .pie-chart-card {
