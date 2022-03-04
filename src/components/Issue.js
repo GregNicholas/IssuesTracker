@@ -41,6 +41,7 @@ const Issue = ({
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(false);
   const [makeComment, setMakeComment] = useState(false);
+  //const modifyDeletePrivilege = currentUser.uid === uid;
   const modifyDeletePrivilege =
     currentUser.uid === uid || isAdmin(currentUser.uid);
   const modifyPrivilege = assignee === currentUser.displayName;
@@ -62,6 +63,8 @@ const Issue = ({
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs[0].ref.delete();
+      })
+      .then(() => {
         setFetchData((prev) => prev + 1);
       });
 
